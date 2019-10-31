@@ -37,3 +37,17 @@ From within the root directory:
 npm install
 ```
 
+### CRUD API
+
+POST /rooms/:id/recommendations
+post a new recommendation to the room listing with an id of :id
+
+GET /rooms/:id/recommendations
+gets all recommended rooms for the room listing with an id of :id
+
+PUT /rooms/:id/recommendations/:recid
+Update recommendation at the id of :recid
+
+DELETE /rooms/:id/recommendations/:recid
+Deleteds recommendation at the id of :recid
+
