@@ -1,13 +1,8 @@
 const mongoose = require('mongoose');
-const config = require('./config');
-
-const login = config.user ? `${config.user}:${config.password}@` : '';
 
 const db = mongoose.connection;
 
-mongoose.connect(`mongodb://${login}${config.host}/airbnb`, {
-  useNewUrlParser: true,
-});
+mongoose.connect('mongodb://localhost/listing');
 
 const placeSchema = new mongoose.Schema({
   id: Number,
@@ -35,8 +30,87 @@ const savedListSchema = new mongoose.Schema({
 
 const SavedList = mongoose.model('SavedList', savedListSchema);
 
+const listingSchema = new mongoose.Schema({
+  listingID: Number,
+  Rooms: [{
+    roomID: Number,
+    title: String,
+    city: String,  
+    avgRating: Number,
+    TotalRating: Number,
+    propertyType: String,
+    plusVerified: String,
+    price: Number,
+    images: [
+      {
+        imgID: Number,
+        imgURL: String
+      },
+      {
+        imgID: Number,
+        imgURL: String
+      },
+      {
+        imgID: Number,
+        imgURL: String
+      }
+    ]
+  },
+  {
+    roomID: Number,
+    title: String,
+    city: String,  
+    avgRating: Number,
+    TotalRating: Number,
+    propertyType: String,
+    plusVerified: String,
+    price: Number,
+    images: [
+      {
+        imgID: Number,
+        imgURL: String
+      },
+      {
+        imgID: Number,
+        imgURL: String
+      },
+      {
+        imgID: Number,
+        imgURL: String
+      }
+    ]
+  },
+  {
+    roomID: Number,
+    title: String,
+    city: String,  
+    avgRating: Number,
+    TotalRating: Number,
+    propertyType: String,
+    plusVerified: String,
+    price: Number,
+    images: [
+      {
+        imgID: Number,
+        imgURL: String
+      },
+      {
+        imgID: Number,
+        imgURL: String
+      },
+      {
+        imgID: Number,
+        imgURL: String
+      }
+    ]
+  }]
+}, {collection : 'listing'});
+
+const Listings = mongoose.model('listing', listingSchema);
+
 module.exports = {
   db,
   SavedList,
   Place,
+  Listings,
 };

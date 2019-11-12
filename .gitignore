@@ -63,3 +63,5 @@ typings/
 # bundled js
 aws-keys.json
 yarn.lock
+
+/database/DummyData

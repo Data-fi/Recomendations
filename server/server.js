@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const cors = require('cors');
 const model = require('../database/index');
@@ -10,20 +11,10 @@ app.use(require('morgan')('dev'));
 app.use(cors());
 app.use('/listing/:id', express.static('public'));
 
-app.get('/api/nearbyPlaces/:id', (req, res) => {
-  // ranges from 8 - 13
-  const randomAmount = Math.floor(Math.random() * 6 + 8);
-  model.Place.aggregate([{ $sample: { size: randomAmount } }]).then((result) => {
-    res.send(result);
-  });
+app.get('/listings', (req, res) => {
+  model.Listings.find({listingID: Math.ceil(Math.random()*10000000)})
+  .then(data => res.send(data));
 });
-
-app.get('/api/savedlist', (req, res) => {
-  model.SavedList.find().exec().then((result) => {
-    res.send(result);
-  });
-});
-
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Listening to port ${[port]}`);

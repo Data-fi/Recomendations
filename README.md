@@ -41,13 +41,21 @@ npm install
 
 POST /rooms/:id/recommendations
 post a new recommendation to the room listing with an id of :id
+input: object of recommendationn
+output: none
 
 GET /rooms/:id/recommendations
-gets all recommended rooms for the room listing with an id of :id
+gets all recommended rooms for the room listing with an id of :id (id of the listing)
+input: none
+output: array of objects of rooms
 
 PUT /rooms/:id/recommendations/:recid
 Update recommendation at the id of :recid
+input: (room id)
+output: none
 
 DELETE /rooms/:id/recommendations/:recid
-Deleteds recommendation at the id of :recid
+Deletes recommendation at the id of :recid 
+input: (room id)
+output: none
 
